@@ -13,13 +13,25 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: const EdgeInsets.only(left: 30.0),
                 child: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.language),
-                  label: Text('EN'),
+                  icon: Icon(
+                    Icons.language,
+                    size: 30,
+                  ),
+                  label: Text(
+                    'EN',
+                    style: TextStyle(fontSize: 25),
+                  ),
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.lightBlue)),
+                      padding: MaterialStateProperty.all(
+                          const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 12)),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(17))),
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.lightBlue)),
                 ),
               )
             ],
