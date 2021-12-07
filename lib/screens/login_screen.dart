@@ -10,8 +10,18 @@ class LoginScreen extends StatelessWidget {
         children: [
           BackgroundImageWithGradient(),
           Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text('en or ar')
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: ElevatedButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.language),
+                  label: Text('EN'),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.lightBlue)),
+                ),
+              )
             ],
           )
         ],

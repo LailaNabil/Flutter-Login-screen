@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import './screens/login_screen.dart';
 import 'helper/customMaterialColor.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(EasyLocalization(
+      path: 'assets/locales',
+      supportedLocales: [Locale('en', 'UK'), Locale('es', 'SP')],
+      child: MyApp())
+  );
 }
 
 class MyApp extends StatelessWidget {
