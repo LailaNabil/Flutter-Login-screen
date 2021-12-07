@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './screens/login_screen.dart';
-import 'models/customMaterialColor.dart';
+import 'helper/customMaterialColor.dart';
 
 void main() {
   runApp(MyApp());

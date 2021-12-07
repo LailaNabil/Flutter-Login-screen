@@ -9,6 +9,11 @@ class LoginScreen extends StatelessWidget {
       body: Stack(
         children: [
           BackgroundImageWithGradient(),
+          Column(
+            children: [
+              Text('en or ar')
+            ],
+          )
         ],
       ),
     );
