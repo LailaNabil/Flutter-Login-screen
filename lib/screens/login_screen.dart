@@ -29,9 +29,9 @@ class LoginScreen extends StatelessWidget {
                           const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 12)),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(17))),
+                          borderRadius: BorderRadius.circular(20))),
                       backgroundColor:
-                          MaterialStateProperty.all(Colors.lightBlue)),
+                          MaterialStateProperty.all(Colors.blueAccent)),
                 ),
               )
             ],
