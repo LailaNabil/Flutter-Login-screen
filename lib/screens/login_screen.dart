@@ -5,16 +5,18 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+    print('height ${screenSize.height}');
     return Scaffold(
       body: Stack(
         children: [
           BackgroundImageWithGradient(),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 30.0),
+                padding: EdgeInsets.only(
+                    top: (screenSize.height / 13.0).ceilToDouble(), left: 30.0),
                 child: ElevatedButton.icon(
                   onPressed: () {},
                   icon: Icon(
@@ -82,7 +84,8 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 15, left: 30.0, right: 30.0),
+                padding:
+                    const EdgeInsets.only(top: 15, left: 30.0, right: 30.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -111,9 +114,7 @@ class LoginScreen extends StatelessWidget {
                         style: TextStyle(fontSize: 18, color: Colors.white70),
                       ),
                     ),
-
                   ],
-
                 ),
               ),
             ],
