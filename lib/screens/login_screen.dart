@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:login_screen/widgets/background.dart';
-import 'package:login_screen/widgets/customElevatedButton.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -16,12 +15,6 @@ class LoginScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 30.0),
-                // child: CustomElevatedButton(
-                //   onPressed: (){},
-                //   label: 'EN',
-                //   icon: Icons.language,
-                //   iconExists: true,
-                // ),
                 child: ElevatedButton.icon(
                   onPressed: () {},
                   icon: Icon(
@@ -30,7 +23,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   label: Text(
                     'EN',
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 22),
                   ),
                   style: ButtonStyle(
                       padding: MaterialStateProperty.all(
@@ -45,10 +38,10 @@ class LoginScreen extends StatelessWidget {
               Center(
                   child: Image.asset(
                 'assets/images/logo_en.png',
-                width: screenSize.width * 0.9,
+                width: screenSize.width * 0.8,
               )),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 5),
                 child: Column(
                   children: [
                     TextField(
@@ -56,22 +49,60 @@ class LoginScreen extends StatelessWidget {
                       decoration: InputDecoration(
                           labelText: 'Enter Phone Number',
                           labelStyle:
-                              TextStyle(color: Colors.white70, fontSize: 28)),
+                              TextStyle(color: Colors.white70, fontSize: 25)),
                     ),
                     TextField(
                       obscureText: true,
                       decoration: InputDecoration(
                           labelText: 'Enter Password',
                           labelStyle:
-                              TextStyle(color: Colors.white70, fontSize: 28)),
+                              TextStyle(color: Colors.white70, fontSize: 25)),
                     ),
                   ],
                 ),
               ),
-              CustomElevatedButton(
-                onPressed: () {},
-                label: 'Login',
-                extraHorizontalPadding: 20,
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Login',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 12)),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.blueAccent)),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 30.0  ,right: 30.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(
+                            fontSize: 20, color: Theme.of(context).primaryColor),
+                      ),
+                      style: ButtonStyle(
+                          padding: MaterialStateProperty.all(
+                              EdgeInsets.symmetric(horizontal: 30, vertical: 12)),
+                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10))),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white)),
+                    ),
+                    TextButton(
+                      onPressed: (){},
+                      child: Text('Forgot password'),
+                    )
+                  ],
+                ),
               )
             ],
           )
