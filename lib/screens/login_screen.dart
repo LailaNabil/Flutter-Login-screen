@@ -1,7 +1,35 @@
+import 'package:easy_localization/easy_localization.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:login_screen/widgets/background.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool isEn ;
+
+  // @override
+  // void initState() {
+  //   context.locale = Locale('en', 'UK');
+  //   isEn = true;
+  //   super.initState();
+  // }
+  //
+
+  void _toggleLanguage(){
+    print('toggle');
+    print(context.locale);
+    setState(() {
+      context.locale = context.locale == Locale('en', 'UK') ? Locale('ar', 'EG'):  Locale('en', 'UK');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -19,13 +47,13 @@ class LoginScreen extends StatelessWidget {
                   padding: EdgeInsets.only(
                       top: (screenSize.height / 13.0).ceilToDouble(),
                       left: 30.0),
-                  child: LanguageButton(),
+                  child: LanguageButton(_toggleLanguage),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Center(
                       child: Image.asset(
-                    'assets/images/logo_en.png',
+                        'logo'.tr().toString(),
                     width: screenSize.width * 0.8,
                   )),
                 ),
@@ -121,14 +149,14 @@ class _LoginFormState extends State<LoginForm> {
 }
 
 class LanguageButton extends StatelessWidget {
-  const LanguageButton({
-    Key key,
-  }) : super(key: key);
+  final Function toggleLanguage;
+
+  LanguageButton(this.toggleLanguage);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: toggleLanguage,
       icon: Icon(
         Icons.language,
         size: 30,
