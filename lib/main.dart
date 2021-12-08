@@ -5,10 +5,12 @@ import './screens/login_screen.dart';
 import 'helper/customMaterialColor.dart';
 
 void main() {
-  runApp(EasyLocalization(
-      path: 'assets/locales',
-      supportedLocales: [Locale('en', 'UK'), Locale('es', 'SP')],
-      child: MyApp())
+  runApp(
+      MyApp()
+      // EasyLocalization(
+      // path: 'assets/locales',
+      // supportedLocales: [Locale('en', 'UK'), Locale('es', 'SP')],
+      // child: MyApp())
   );
 }
 
