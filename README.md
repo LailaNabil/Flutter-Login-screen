@@ -1,4 +1,4 @@
-# login_screen
+# dummy_app
 
 A new Flutter application.
 
