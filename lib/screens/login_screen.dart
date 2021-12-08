@@ -12,19 +12,7 @@ class LoginScreen extends StatefulWidget {
 
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool isEn ;
-
-  // @override
-  // void initState() {
-  //   context.locale = Locale('en', 'UK');
-  //   isEn = true;
-  //   super.initState();
-  // }
-  //
-
   void _toggleLanguage(){
-    print('toggle');
-    print(context.locale);
     setState(() {
       context.locale = context.locale == Locale('en', 'UK') ? Locale('ar', 'EG'):  Locale('en', 'UK');
     });
@@ -114,7 +102,7 @@ class _LoginFormState extends State<LoginForm> {
           style: TextStyle(color: Colors.white, fontSize: 25),
           keyboardType: TextInputType.phone,
           decoration: InputDecoration(
-              labelText: 'Enter Phone Number',
+              labelText: 'auth_phone'.tr().toString(),
               labelStyle: TextStyle(color: Colors.white70, fontSize: 25)),
         ),
         Row(
@@ -125,7 +113,7 @@ class _LoginFormState extends State<LoginForm> {
                 style: TextStyle(color: Colors.white, fontSize: 25),
                 obscureText: passwordObscure,
                 decoration: InputDecoration(
-                    labelText: 'Enter Password',
+                    labelText: 'auth_password'.tr().toString(),
                     labelStyle: TextStyle(color: Colors.white70, fontSize: 25)),
               ),
             ),
@@ -162,7 +150,7 @@ class LanguageButton extends StatelessWidget {
         size: 30,
       ),
       label: Text(
-        'EN',
+        'lang'.tr().toString(),
         style: TextStyle(fontSize: 22),
       ),
       style: ButtonStyle(
@@ -185,7 +173,7 @@ class LoginButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       child: Text(
-        'Login',
+        'login'.tr().toString(),
         style: TextStyle(fontSize: 20),
       ),
       style: ButtonStyle(
@@ -208,7 +196,7 @@ class ForgotPasswordButton extends StatelessWidget {
     return TextButton(
       onPressed: () {},
       child: Text(
-        'Forgot password',
+        'forgot_password'.tr().toString(),
         style: TextStyle(fontSize: 18, color: Colors.white70),
       ),
     );
@@ -225,7 +213,7 @@ class SignupButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       child: Text(
-        'Sign up',
+        'sign_up'.tr().toString(),
         style: TextStyle(fontSize: 20, color: Theme.of(context).primaryColor),
       ),
       style: ButtonStyle(

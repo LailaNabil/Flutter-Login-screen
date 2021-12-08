@@ -1,5 +1,6 @@
 {
   "title" : "العنوان",
+  "lang" : "AR",
   "logo" : "assets/images/logo_ar.png",
   "auth_phone" : "ادخل رقم التليفون",
   "auth_password" : "ادخل كلمة المرور",
