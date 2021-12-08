@@ -23,7 +23,7 @@ class BackgroundImageWithGradient extends StatelessWidget {
                   // Colors.deepPurple.withOpacity(0.1),
                   Color.fromRGBO(35,21,84, 0.97),
                   Color.fromRGBO(35,21,84, 0.45),
-                  Color.fromRGBO(35,21,84, 0.1),
+                  Color.fromRGBO(35,21,84, 0.43),
                 ]),
           ),
         ),
