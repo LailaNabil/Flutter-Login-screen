@@ -17,25 +17,7 @@ class LoginScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(
                     top: (screenSize.height / 13.0).ceilToDouble(), left: 30.0),
-                child: ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.language,
-                    size: 30,
-                  ),
-                  label: Text(
-                    'EN',
-                    style: TextStyle(fontSize: 22),
-                  ),
-                  style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
-                          const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 12)),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20))),
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.blueAccent)),
-                ),
+                child: LanguageButton(),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -68,20 +50,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               Center(
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 12)),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.blueAccent)),
-                ),
+                child: LoginButton(),
               ),
               Padding(
                 padding:
@@ -89,31 +58,8 @@ class LoginScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Sign up',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Theme.of(context).primaryColor),
-                      ),
-                      style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                              EdgeInsets.symmetric(
-                                  horizontal: 30, vertical: 12)),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10))),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white)),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Forgot password',
-                        style: TextStyle(fontSize: 18, color: Colors.white70),
-                      ),
-                    ),
+                    SignupButton(),
+                    ForgotPasswordButton(),
                   ],
                 ),
               ),
@@ -121,6 +67,104 @@ class LoginScreen extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class LanguageButton extends StatelessWidget {
+  const LanguageButton({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton.icon(
+      onPressed: () {},
+      icon: Icon(
+        Icons.language,
+        size: 30,
+      ),
+      label: Text(
+        'EN',
+        style: TextStyle(fontSize: 22),
+      ),
+      style: ButtonStyle(
+          padding: MaterialStateProperty.all(
+              const EdgeInsets.symmetric(
+                  horizontal: 10, vertical: 12)),
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20))),
+          backgroundColor:
+              MaterialStateProperty.all(Colors.blueAccent)),
+    );
+  }
+}
+
+class LoginButton extends StatelessWidget {
+  const LoginButton({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      child: Text(
+        'Login',
+        style: TextStyle(fontSize: 20),
+      ),
+      style: ButtonStyle(
+          padding: MaterialStateProperty.all(
+              EdgeInsets.symmetric(horizontal: 30, vertical: 12)),
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8))),
+          backgroundColor:
+              MaterialStateProperty.all(Colors.blueAccent)),
+    );
+  }
+}
+
+class ForgotPasswordButton extends StatelessWidget {
+  const ForgotPasswordButton({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      child: Text(
+        'Forgot password',
+        style: TextStyle(fontSize: 18, color: Colors.white70),
+      ),
+    );
+  }
+}
+
+class SignupButton extends StatelessWidget {
+  const SignupButton({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      child: Text(
+        'Sign up',
+        style: TextStyle(
+            fontSize: 20,
+            color: Theme.of(context).primaryColor),
+      ),
+      style: ButtonStyle(
+          padding: MaterialStateProperty.all(
+              EdgeInsets.symmetric(
+                  horizontal: 30, vertical: 12)),
+          shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8))),
+          backgroundColor:
+              MaterialStateProperty.all(Colors.white)),
     );
   }
 }
