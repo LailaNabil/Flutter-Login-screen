@@ -10,7 +10,7 @@ class LoginScreen extends StatelessWidget {
         children: [
           BackgroundImageWithGradient(),
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
@@ -35,13 +35,17 @@ class LoginScreen extends StatelessWidget {
                           MaterialStateProperty.all(Colors.blueAccent)),
                 ),
               ),
-              Center(
-                  child: Image.asset(
-                'assets/images/logo_en.png',
-                width: screenSize.width * 0.8,
-              )),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 5),
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                    child: Image.asset(
+                  'assets/images/logo_en.png',
+                  width: screenSize.width * 0.8,
+                )),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
                 child: Column(
                   children: [
                     TextField(
@@ -78,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 30.0  ,right: 30.0),
+                padding: const EdgeInsets.only(top: 15, left: 30.0, right: 30.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -87,23 +91,31 @@ class LoginScreen extends StatelessWidget {
                       child: Text(
                         'Sign up',
                         style: TextStyle(
-                            fontSize: 20, color: Theme.of(context).primaryColor),
+                            fontSize: 20,
+                            color: Theme.of(context).primaryColor),
                       ),
                       style: ButtonStyle(
                           padding: MaterialStateProperty.all(
-                              EdgeInsets.symmetric(horizontal: 30, vertical: 12)),
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10))),
+                              EdgeInsets.symmetric(
+                                  horizontal: 30, vertical: 12)),
+                          shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10))),
                           backgroundColor:
                               MaterialStateProperty.all(Colors.white)),
                     ),
                     TextButton(
-                      onPressed: (){},
-                      child: Text('Forgot password'),
-                    )
+                      onPressed: () {},
+                      child: Text(
+                        'Forgot password',
+                        style: TextStyle(fontSize: 18, color: Colors.white70),
+                      ),
+                    ),
+
                   ],
+
                 ),
-              )
+              ),
             ],
           )
         ],
