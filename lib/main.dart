@@ -26,8 +26,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: CustomMaterialColor.generateCustomColor(35,21,84),
       ),
-      // home: LoginScreen(),
-      home: ProfileScreen(),
+      home: LoginScreen(),
+      // home: ProfileScreen(),
+      routes: {
+        ProfileScreen.route : (ctx)=>ProfileScreen()
+      },
     );
   }
 }
