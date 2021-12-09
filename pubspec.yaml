@@ -53,6 +53,12 @@ flutter:
     - assets/images/bg_3.jpg
     - assets/images/logo_ar.png
     - assets/images/logo_en.png
+    - assets/images/icons/add_branch.png
+    - assets/images/icons/management_control.png
+    - assets/images/icons/notification.png
+    - assets/images/icons/payment.png
+    - assets/images/icons/settings.png
+    - assets/images/icons/promotions.png
     - assets/locales/en-UK.json
     - assets/locales/ar-EG.json
   #   - images/a_dot_ham.jpeg
