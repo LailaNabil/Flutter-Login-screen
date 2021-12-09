@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_intro/flutter_intro.dart';
 
 import 'package:flutter/material.dart';
 
@@ -9,17 +12,76 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-
-
 class _LoginScreenState extends State<LoginScreen> {
+  bool init = false;
+
   void _toggleLanguage(){
     setState(() {
       context.locale = context.locale == Locale('en', 'UK') ? Locale('ar', 'EG'):  Locale('en', 'UK');
     });
   }
 
+  Intro intro = Intro(
+    /// You can set it true to disable animation
+    noAnimation: false,
+
+    /// The total number of guide pages, must be passed
+    stepCount: 6,
+
+    /// Click on whether the mask is allowed to be closed.
+    maskClosable: true,
+
+    /// When highlight widget is tapped.
+    onHighlightWidgetTap: (introStatus) {
+      print(introStatus);
+    },
+
+    /// The padding of the highlighted area and the widget
+    padding: EdgeInsets.all(8),
+
+    /// Border radius of the highlighted area
+    borderRadius: BorderRadius.all(Radius.circular(4)),
+
+    /// Use the default useDefaultTheme provided by the library to quickly build a guide page
+    /// Need to customize the style and content of the guide page, implement the widgetBuilder method yourself
+    /// * Above version 2.3.0, you can use useAdvancedTheme to have more control over the style of the widget
+    /// * Please see https://github.com/tal-tech/flutter_intro/issues/26
+    widgetBuilder: StepWidgetBuilder.useDefaultTheme(
+      /// Guide page text
+      texts: [
+        'Change Language from here',
+        'Enter phone number to login here',
+        'Enter password to login/sign up here',
+        'After entering phone number and password,press login',
+        'To switch to sign up mode,press here',
+        'In case you forgot your password,press here',
+      ],
+      /// Button text
+      buttonTextBuilder: (curr, total) {
+        return curr < total - 1 ? 'Next' : 'Finish';
+      },
+    ),
+  );
+  //
+
+
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+      Duration(
+        milliseconds: 500,
+      ),
+          () {
+        /// start the intro
+        intro.start(context);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    // intro.start(context);
     final screenSize = MediaQuery.of(context).size;
     print('height ${screenSize.height}');
     return Scaffold(
@@ -35,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.only(
                       top: (screenSize.height / 13.0).ceilToDouble(),
                       left: 30.0),
-                  child: LanguageButton(_toggleLanguage),
+                  child: LanguageButton(_toggleLanguage , intro.keys[0]),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -48,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 20.0, vertical: 15),
-                  child: LoginForm(),
+                  child: LoginForm(phoneKey: intro.keys[1] , passwordKey: intro.keys[2] , loginKey: intro.keys[3] ),
                 ),
                 Padding(
                   padding:
@@ -56,8 +118,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SignupButton(),
-                      ForgotPasswordButton(),
+                      SignupButton(intro.keys[4] ),
+                      ForgotPasswordButton(intro.keys[5] ),
                     ],
                   ),
                 ),
@@ -71,10 +133,11 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({
-    Key key,
-  }) : super(key: key);
+  final Key phoneKey;
+  final Key passwordKey;
+  final Key loginKey;
 
+  LoginForm({this.passwordKey,this.phoneKey,this.loginKey});
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -99,6 +162,7 @@ class _LoginFormState extends State<LoginForm> {
     return Column(
       children: [
         TextField(
+          key: widget.phoneKey,
           style: TextStyle(color: Colors.white, fontSize: 25),
           keyboardType: TextInputType.phone,
           decoration: InputDecoration(
@@ -110,6 +174,7 @@ class _LoginFormState extends State<LoginForm> {
           children: [
             Expanded(
               child: TextField(
+                key: widget.passwordKey,
                 style: TextStyle(color: Colors.white, fontSize: 25),
                 obscureText: passwordObscure,
                 decoration: InputDecoration(
@@ -128,7 +193,7 @@ class _LoginFormState extends State<LoginForm> {
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: Center(
-            child: LoginButton(),
+            child: LoginButton(widget.loginKey),
           ),
         ),
       ],
@@ -138,12 +203,14 @@ class _LoginFormState extends State<LoginForm> {
 
 class LanguageButton extends StatelessWidget {
   final Function toggleLanguage;
+  final Key key;
 
-  LanguageButton(this.toggleLanguage);
+  LanguageButton(this.toggleLanguage,this.key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
+      key: key,
       onPressed: toggleLanguage,
       icon: Icon(
         Icons.language,
@@ -164,13 +231,14 @@ class LanguageButton extends StatelessWidget {
 }
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({
-    Key key,
-  }) : super(key: key);
+  final Key key;
+
+  LoginButton(this.key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      key: key,
       onPressed: () {},
       child: Text(
         'login'.tr().toString(),
@@ -187,13 +255,13 @@ class LoginButton extends StatelessWidget {
 }
 
 class ForgotPasswordButton extends StatelessWidget {
-  const ForgotPasswordButton({
-    Key key,
-  }) : super(key: key);
+  final Key key;
 
+  ForgotPasswordButton(this.key);
   @override
   Widget build(BuildContext context) {
     return TextButton(
+      key: key,
       onPressed: () {},
       child: Text(
         'forgot_password'.tr().toString(),
@@ -204,9 +272,10 @@ class ForgotPasswordButton extends StatelessWidget {
 }
 
 class SignupButton extends StatelessWidget {
-  const SignupButton({
-    Key key,
-  }) : super(key: key);
+  final Key key;
+
+  SignupButton(this.key);
+
 
   @override
   Widget build(BuildContext context) {
